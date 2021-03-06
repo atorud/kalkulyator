@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        .kalkulyator{
+            width: 240px;
+            height: 348px;
+            background-color: rgb(78, 8, 243); 
+        }
+
+        #ekran{
+            width: 100%;
+            box-sizing: border-box;
+            height: 70px;
+            caret-color: #fff;
+            font-size: 30px;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        table{
+            width: 100%;
+             color: #fff;
+             font-size: 42px;
+             font-weight: 900;
+             font-family: monospace;
+             text-align: center;
+        }
+
+        .clear{
+            background-color:rgb(250, 3, 3) ;
+            text-transform: uppercase;
+        }
+
+        td:hover{
+            background-color: darkgreen;
+            transition:  0.5s;
+            cursor: pointer;
+        }
+
+        
+
+        
+    </style>
+    <div class="kalkulyator">
+        <input type="text"  id="ekran" placeholder="M.Ibragimov">
+        <table>
+            <tr>
+                <td colspan="2" class="clear">c</td>
+                <td>/</td>
+                <td>%</td>
+            </tr>
+
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>*</td>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>+</td>
+            </tr>
+            <tr>
+                <td>.</td>
+                <td>0</td>
+                <td colspan="2" class="result">=</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        let ekran = document.getElementById('ekran');
+        document.querySelectorAll('table').forEach(function(td){
+            td.addEventListener('click',function(e){
+             let num = e.target.innerHTML;
+             if(num == 'c'){
+              ekran.value ='';
+             }else if(num =='='){
+             ekran.value = eval(ekran.value);
+             }else{
+            ekran.value += num;
+             }
+            });
+        });
+    </script>
+</body>
+</html>
